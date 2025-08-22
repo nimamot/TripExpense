@@ -15,7 +15,7 @@ export default function InviteNotFound() {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 text-center">
           <p className="text-gray-600 mb-6">
-            The invitation you're trying to access doesn't exist or has already been used.
+            The invitation you&apos;re trying to access doesn&apos;t exist or has already been used.
           </p>
           <Link
             href="/app"

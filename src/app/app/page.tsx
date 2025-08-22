@@ -7,8 +7,6 @@ import {
   Calendar, 
   ArrowRight, 
   MapPin, 
-  DollarSign,
-  Clock,
   CheckCircle
 } from 'lucide-react'
 
@@ -178,7 +176,7 @@ export default async function AppDashboard() {
                       {invite.trips?.name}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      You've been invited to join this trip
+                      You&apos;ve been invited to join this trip
                     </p>
                   </div>
                   <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">

@@ -49,7 +49,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
           Accept Trip Invitation
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          You've been invited to join a trip
+          You&apos;ve been invited to join a trip
         </p>
       </div>
 

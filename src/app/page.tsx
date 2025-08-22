@@ -264,7 +264,7 @@ export default function HomePage() {
               </span>
             </div>
             <div className="text-gray-400 text-sm">
-              © 2024 TripExpense. Made with ❤️ for travelers everywhere.
+              © TripExpense. Made with ❤️ for travelers everywhere.
             </div>
           </div>
         </div>
