@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { createClient } from '@/lib/supabase'
 
 interface Expense {
@@ -96,7 +96,7 @@ export default function ExportTab({ tripId }: ExportTabProps) {
     downloadFile(csvContent, `trip-balances-${tripId}.csv`)
   }
 
-  const calculateBalances = (expenses: any[], members: any[]) => {
+  const calculateBalances = (expenses: Array<{payer_id: string; amount_cents: number; expense_shares?: Array<{user_id: string; share_cents: number}>}>, members: Array<{user_id: string; profiles?: {display_name: string}}>) => {
     const balanceMap = new Map<string, { user_id: string; display_name: string; net_cents: number }>()
 
     members.forEach(member => {
@@ -113,7 +113,7 @@ export default function ExportTab({ tripId }: ExportTabProps) {
         payer.net_cents += expense.amount_cents
       }
 
-      expense.expense_shares?.forEach((share: any) => {
+      expense.expense_shares?.forEach((share: {user_id: string; share_cents: number}) => {
         const member = balanceMap.get(share.user_id)
         if (member) {
           member.net_cents -= share.share_cents

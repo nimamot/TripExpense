@@ -29,7 +29,7 @@ export default function BalancesTab({ tripId }: BalancesTabProps) {
 
   useEffect(() => {
     loadBalances()
-  }, [tripId])
+  }, [tripId, loadBalances])
 
 
 
@@ -51,7 +51,7 @@ export default function BalancesTab({ tripId }: BalancesTabProps) {
       }
 
       // Get expense shares for all expenses
-      let expenseShares: any[] = []
+      let expenseShares: Array<{expense_id: string; user_id: string; share_cents: number}> = []
       if (expenses && expenses.length > 0) {
         const expenseIds = expenses.map(e => e.id)
         const { data: shares, error: sharesError } = await supabase
@@ -130,7 +130,7 @@ export default function BalancesTab({ tripId }: BalancesTabProps) {
 
         // Get shares for this expense
         const sharesForExpense = expenseShares.filter(share => share.expense_id === expense.id)
-        sharesForExpense.forEach((share: any) => {
+        sharesForExpense.forEach((share: {expense_id: string; user_id: string; share_cents: number}) => {
           const member = balanceMap.get(share.user_id)
           if (member) {
             member.net_cents -= share.share_cents

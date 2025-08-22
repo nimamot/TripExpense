@@ -9,8 +9,7 @@ import {
   CreditCard, 
   Users, 
   Calculator, 
-  Download,
-  Calendar
+  Download
 } from 'lucide-react'
 
 interface TripTabsProps {

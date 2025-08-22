@@ -96,7 +96,7 @@ export default function AcceptInviteForm({ invite }: AcceptInviteFormProps) {
     <div className="space-y-6">
       <div className="text-center">
         <h3 className="text-lg font-medium text-gray-900 mb-2">
-          Join "{invite.trips.name}"
+          Join &quot;{invite.trips.name}&quot;
         </h3>
         <p className="text-sm text-gray-600">
           You&apos;ve been invited to join this trip and track expenses together.

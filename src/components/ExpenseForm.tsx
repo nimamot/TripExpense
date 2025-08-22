@@ -33,7 +33,7 @@ export default function ExpenseForm({ tripId, onSuccess, onCancel }: ExpenseForm
 
   useEffect(() => {
     loadMembers()
-  }, [tripId])
+  }, [tripId, loadMembers])
 
   const loadMembers = async () => {
     try {

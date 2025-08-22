@@ -31,7 +31,7 @@ export default function ExpensesTab({ tripId }: ExpensesTabProps) {
 
   useEffect(() => {
     loadExpenses()
-  }, [tripId])
+  }, [tripId, loadExpenses])
 
   const loadExpenses = async () => {
     try {

@@ -6,9 +6,7 @@ import {
   Download, 
   Globe, 
   Shield, 
-  Zap,
-  ArrowRight,
-  CheckCircle
+  ArrowRight
 } from 'lucide-react'
 
 export default function HomePage() {
@@ -240,7 +238,7 @@ export default function HomePage() {
             Ready to simplify your trip expenses?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of travelers who've made splitting expenses effortless.
+            Join thousands of travelers who&apos;ve made splitting expenses effortless.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <SignInButton />

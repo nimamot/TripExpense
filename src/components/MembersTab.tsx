@@ -36,7 +36,7 @@ export default function MembersTab({ tripId }: MembersTabProps) {
   useEffect(() => {
     loadMembers()
     loadInvites()
-  }, [tripId])
+  }, [tripId, loadMembers, loadInvites])
 
   const loadMembers = async () => {
     try {

@@ -136,9 +136,9 @@ export default function TripForm() {
 
       {/* Help Text */}
       <div className="mt-8 text-center">
-        <p className="text-sm text-gray-500">
-          You'll be able to invite friends and start adding expenses once your trip is created.
-        </p>
+                    <p className="text-sm text-gray-500">
+              You&apos;ll be able to invite friends and start adding expenses once your trip is created.
+            </p>
       </div>
     </div>
   )
