@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase'
 import { createExpense } from '@/lib/actions'
 
@@ -31,11 +31,7 @@ export default function ExpenseForm({ tripId, onSuccess, onCancel }: ExpenseForm
 
   const supabase = createClient()
 
-  useEffect(() => {
-    loadMembers()
-  }, [tripId, loadMembers])
-
-  const loadMembers = async () => {
+  const loadMembers = useCallback(async () => {
     try {
       console.log('Loading members for expense form, trip:', tripId)
       
@@ -93,7 +89,11 @@ export default function ExpenseForm({ tripId, onSuccess, onCancel }: ExpenseForm
       setError('Failed to load trip members')
       console.error('Error loading members:', err)
     }
-  }
+  }, [tripId])
+
+  useEffect(() => {
+    loadMembers()
+  }, [loadMembers])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

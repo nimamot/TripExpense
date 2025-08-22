@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase'
 
 interface Balance {
@@ -27,13 +27,7 @@ export default function BalancesTab({ tripId }: BalancesTabProps) {
 
   const supabase = createClient()
 
-  useEffect(() => {
-    loadBalances()
-  }, [tripId, loadBalances])
-
-
-
-  const loadBalances = async () => {
+  const loadBalances = useCallback(async () => {
     try {
 
       
@@ -156,7 +150,11 @@ export default function BalancesTab({ tripId }: BalancesTabProps) {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [tripId])
+
+  useEffect(() => {
+    loadBalances()
+  }, [loadBalances])
 
   const suggestSettlements = (nets: Balance[]): Settlement[] => {
     const debtors = nets.filter(n => n.net_cents < 0).sort((a, b) => a.net_cents - b.net_cents)

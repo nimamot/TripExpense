@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase'
 import { createInvite } from '@/lib/actions'
 
@@ -33,12 +33,7 @@ export default function MembersTab({ tripId }: MembersTabProps) {
 
   const supabase = createClient()
 
-  useEffect(() => {
-    loadMembers()
-    loadInvites()
-  }, [tripId, loadMembers, loadInvites])
-
-  const loadMembers = async () => {
+  const loadMembers = useCallback(async () => {
     try {
       console.log('Loading members for trip:', tripId)
       
@@ -98,9 +93,9 @@ export default function MembersTab({ tripId }: MembersTabProps) {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [tripId])
 
-  const loadInvites = async () => {
+  const loadInvites = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('invites')
@@ -114,7 +109,12 @@ export default function MembersTab({ tripId }: MembersTabProps) {
     } catch (err) {
       console.error('Error loading invites:', err)
     }
-  }
+  }, [tripId])
+
+  useEffect(() => {
+    loadMembers()
+    loadInvites()
+  }, [loadMembers, loadInvites])
 
   const handleInvite = async (e: React.FormEvent) => {
     e.preventDefault()

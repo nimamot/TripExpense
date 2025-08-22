@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase'
 import ExpenseForm from './ExpenseForm'
 
@@ -29,11 +29,7 @@ export default function ExpensesTab({ tripId }: ExpensesTabProps) {
 
   const supabase = createClient()
 
-  useEffect(() => {
-    loadExpenses()
-  }, [tripId, loadExpenses])
-
-  const loadExpenses = async () => {
+  const loadExpenses = useCallback(async () => {
     try {
       console.log('Loading expenses for trip:', tripId)
       
@@ -91,7 +87,11 @@ export default function ExpensesTab({ tripId }: ExpensesTabProps) {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [tripId])
+
+  useEffect(() => {
+    loadExpenses()
+  }, [loadExpenses])
 
   const handleExpenseCreated = () => {
     setShowForm(false)
